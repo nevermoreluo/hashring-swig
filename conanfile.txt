@@ -1,0 +1,7 @@
+[requires]
+swig/4.0.2
+lua/5.4.3
+cpython/3.10.0
+
+[generators]
+cmake
