@@ -31,7 +31,7 @@ INCLUDE(${SWIG_USE_FILE})
 SET(CMAKE_SWIG_FLAGS "")
 
 set(SWIG_FILES src/interfaces/swig/hashring_g.i)
-set(SRC_FILES src/hashring/hashring.cpp)
+set(SRC_FILES src/hashring/hashring.cpp src/hashring/hash/md5.cpp)
 
 
 set_property(SOURCE ${SWIG_FILES} PROPERTY CPLUSPLUS ON)
@@ -39,7 +39,7 @@ set_property(SOURCE ${SWIG_FILES} PROPERTY CPLUSPLUS ON)
 set(TARGET_MODEL_NAME Hashring)
 
 SET_SOURCE_FILES_PROPERTIES(${SWIG_FILES} PROPERTIES CPLUSPLUS ON)
-SET_SOURCE_FILES_PROPERTIES(${SWIG_FILES} PROPERTIES SWIG_FLAGS "-includeall")
+#SET_SOURCE_FILES_PROPERTIES(${SWIG_FILES} PROPERTIES SWIG_FLAGS "-includeall")
 
 
 #--------------------------------------------------------------------
