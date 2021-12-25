@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(time_swig)
+project(hashring)
 
 set(CMAKE_CXX_STANDARD 11)
 add_compile_options(-fPIC)
@@ -36,7 +36,7 @@ set(SRC_FILES src/hashring/hashring.cpp)
 
 set_property(SOURCE ${SWIG_FILES} PROPERTY CPLUSPLUS ON)
 
-set(TARGET_MODEL_NAME TimeSwig)
+set(TARGET_MODEL_NAME Hashring)
 
 SET_SOURCE_FILES_PROPERTIES(${SWIG_FILES} PROPERTIES CPLUSPLUS ON)
 SET_SOURCE_FILES_PROPERTIES(${SWIG_FILES} PROPERTIES SWIG_FLAGS "-includeall")
