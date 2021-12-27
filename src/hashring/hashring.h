@@ -11,7 +11,6 @@
 #include "consistent_hash_map.hpp"
 
 struct vnode_t {
-    vnode_t() {}
     vnode_t(std::size_t n,std::size_t v):node_id(n),vnode_id(v) {}
 
     std::string to_str() const {

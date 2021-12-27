@@ -104,10 +104,10 @@ inline void MD5::II(uint4 &a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4
 //////////////////////////////////////////////
 
 // default ctor, just initailize
-MD5::MD5()
-{
-    init();
-}
+//MD5::MD5()
+//{
+//    init();
+//}
 
 //////////////////////////////////////////////
 
@@ -342,8 +342,10 @@ std::string MD5::hexdigest() const
         return "";
 
     char buf[33];
-    for (int i=0; i<16; i++)
-        sprintf(buf+i*2, "%02x", digest[i]);
+    for (int i=0; i<16; i++){
+        snprintf(buf + i * 2, sizeof(buf) - i * 2, "%02x", digest[i]);
+        // sprintf(buf+i*2, "%02x", digest[i]);
+    }
     buf[32]=0;
 
     return std::string(buf);
