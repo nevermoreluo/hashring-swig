@@ -1,5 +1,14 @@
 
-package.cpath = package.cpath..";/home/never/github/hashring/cmake-build-debug/lua/?.so";
+
+local function getCPath(buildPath, sep)
+    sep=sep or'/'
+    buildPath = buildPath or "cmake-build-debug"
+    local fileName = debug.getinfo(1, "S").source:sub(2);
+    fileName = fileName:match("(.*"..sep..")")
+    return table.concat({fileName, "..", "..", buildPath, "lua", "?.so" }, sep)
+end
+
+package.cpath = package.cpath..";"..getCPath();
 
 require("Hashring");
 

@@ -1,0 +1,29 @@
+import sys
+import os
+build_path = "cmake-build-debug"
+cpath = os.path.abspath(os.path.dirname(__file__))+"/../../"+build_path+"/python";
+print(cpath);
+sys.path.append(cpath);
+
+import Hashring
+
+f = Hashring.HashRing();
+
+f.insertNode(5);
+f.insertNode(9);
+f.insertNode(3);
+print(f.getVirtualNodeCount())
+print(f.findNode("ssdsadadasadassadsadasdasdasdaaaaasdasda"))
+
+print("-----")
+
+print(f.findNode("asdadadasfsssssssssssssssssdddssafsdfsd"))
+
+
+
+
+
+
+
+
+
