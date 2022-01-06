@@ -2,7 +2,6 @@ import sys
 import os
 build_path = "cmake-build-debug"
 cpath = os.path.abspath(os.path.dirname(__file__))+"/../../"+build_path+"/python";
-print(cpath);
 sys.path.append(cpath);
 
 import Hashring
