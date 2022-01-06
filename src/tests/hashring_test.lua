@@ -2,7 +2,7 @@
 
 local function getCPath(buildPath, sep)
     sep=sep or'/'
-    buildPath = buildPath or "cmake-build-debug"
+    buildPath = buildPath or "lib"
     local fileName = debug.getinfo(1, "S").source:sub(2);
     fileName = fileName:match("(.*"..sep..")")
     return table.concat({fileName, "..", "..", buildPath, "lua", "?.so" }, sep)

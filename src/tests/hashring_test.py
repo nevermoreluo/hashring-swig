@@ -1,6 +1,6 @@
 import sys
 import os
-build_path = "cmake-build-debug"
+build_path = "lib"
 cpath = os.path.abspath(os.path.dirname(__file__))+"/../../"+build_path+"/python";
 sys.path.append(cpath);
 

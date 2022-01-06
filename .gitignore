@@ -3,6 +3,8 @@
 .vscode/
 cmake-build-*/
 
+lib/*
+
 # Prerequisites
 *.d
 

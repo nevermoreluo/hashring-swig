@@ -15,6 +15,39 @@
 如果不使用conan的话，请关掉cmake中的BUILD_CONAN_LIB,并手动安装conanfile.txt中的相应的依赖
 
 
+## 目录结构  
+```
+├── lib # swig生成的各语言的库位置
+│     ├── lua
+│     │     ├── Hashring.so
+│     │     └── hashring_gLUA_wrap.cxx
+│     └── python
+│           ├── Hashring.py
+│           ├── _Hashring.so
+│           └── hashring_gPYTHON_wrap.cxx
+└── src
+    ├── cmake  # 管理每个语言生成的cmake文件
+    │     ├── lua.cmake
+    │     └── python.cmake
+    ├── hashring # 需要暴露的项目本身的source code
+    │     ├── consistent_hash_map.hpp
+    │     ├── hash
+    │     │     ├── md5.cpp
+    │     │     └── md5.h
+    │     ├── hashring.cpp
+    │     └── hashring.h
+    ├── interfaces # swig需要的定义template文件
+    │     └── swig
+    │         ├── hashring.i
+    │         └── hashring_g.i
+    └── tests  # 用于各个语言的测试脚本
+        ├── hashring_test.lua
+        └── hashring_test.py
+```
+
+
+
+
 ## How to test?
 具体清查阅src/tests目录下的脚本
 
