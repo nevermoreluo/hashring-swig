@@ -9,13 +9,26 @@ set(BUILD_CONAN_LIB ON)
 
 
 if (BUILD_CONAN_LIB)
-    set(CONAN_CMAKE_FILE_PATH ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-    if(NOT EXISTS ${CONAN_CMAKE_FILE_PATH})
-        message(FATAL_ERROR "The file ${CONAN_CMAKE_FILE_PATH} doesn't exist, you have to run follow command \n `conan install . -s compiler.libcxx=libstdc++11 --install-folder=${CMAKE_BINARY_DIR}`")
+
+    if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/.conan/conan.cmake
+            DESTINATION ${CMAKE_BINARY_DIR})
     endif()
+    # 国内下github太慢了 我直接下载在.conan文件内了
+    # file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake"
+    #        "${CMAKE_BINARY_DIR}/conan.cmake")
+
+    include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+    conan_cmake_run(NO_OUTPUT_DIRS CONANFILE conanfile.txt
+            INSTALL_FOLDER ${CMAKE_BINARY_DIR}
+            BUILD missing
+            BASIC_SETUP
+            )
+
+    set(CONAN_CMAKE_FILE_PATH ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
     include(${CONAN_CMAKE_FILE_PATH})
-    conan_basic_setup(TARGET NO_OUTPUT_DIRS)
 
     include(${CONAN_BUILD_MODULES_PATHS_SWIG})
     set(SWIG_DIR ${CONAN_SWIG_ROOT})
